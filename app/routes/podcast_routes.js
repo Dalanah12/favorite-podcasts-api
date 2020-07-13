@@ -35,7 +35,7 @@ router.get('/podcasts', requireToken, (req, res, next) => {
 // SHOW
 // allows user to GET a specific podcast
 router.get('/podacasts/:id', requireToken, (req, res, next) => {
-  Podcast.findbyId(req.params.id)
+  Podcast.findById(req.params.id)
     .then(handle404)
     .then(podcast => res.status(200).json({ podcast: podcast.toObject() }))
     .catch(next)
@@ -70,7 +70,7 @@ router.patch('/podcasts/:id', requireToken, removeBlanks, (req, res, next) => {
 // DELETE
 // Owner is able to delete a podcast
 router.delete('/podcasts/:id', requireToken, (req, res, next) => {
-  Podcast.findbyId(req.params.id)
+  Podcast.findById(req.params.id)
     .then(handle404)
     .then(podcast => {
       requireOwnership(req, podcast)
