@@ -56,7 +56,7 @@ router.post('/podcasts', requireToken, removeBlanks, (req, res, next) => {
 // Update podcast body properties
 router.patch('/podcasts/:id', requireToken, removeBlanks, (req, res, next) => {
   delete req.body.podcast.owner
-
+  console.log('id is', req.params.id)
   Podcast.findById(req.params.id)
     .then(handle404)
     .then(podcast => {

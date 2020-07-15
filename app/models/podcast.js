@@ -13,6 +13,10 @@ const podcastSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  topic: {
+    type: String,
+    required: true
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
